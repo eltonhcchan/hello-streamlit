@@ -33,5 +33,5 @@ data_load_state.text('Loading data...done!')
 st.title("Connect to CSDI") 
 st.subheader("Find slope data") 
 st.write("Show it, show it✨ ")
-
-st.write(data)
+st.write( '### 1. Dataset Preview ')
+st.dataframe(data, use_container_width=True)

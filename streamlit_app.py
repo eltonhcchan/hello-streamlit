@@ -34,4 +34,5 @@ st.title("Connect to CSDI")
 st.subheader("Find slope data") 
 st.write("Show it, show it✨ ")
 st.write( '### 1. Dataset Preview ')
-st.dataframe(data, use_container_width=True)
+# st.dataframe(data) This causes error because st.dataframe cannot handle geometry in geopandas
+walker = pyg.walk(data)

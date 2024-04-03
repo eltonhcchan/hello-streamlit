@@ -1,5 +1,6 @@
 import streamlit as st 
 import geopandas as gpd
+import pandas as pd
 import requests
 import geojson
 from pygwalker.api.streamlit import StreamlitRenderer, init_streamlit_comm
@@ -27,6 +28,9 @@ def load_data(nrows):
     query_params['resultRecordCount'] = nrows
     r = requests.get(url, params=query_params)
     data = gpd.GeoDataFrame.from_features(geojson.loads(r.content), crs="EPSG:4326") 
+    data['longitude']=data['geometry'].x
+    data['latitude']=data['geometry'].y
+    data = data.drop(columns='geometry')
     return data
 
 # Establish communication between pygwalker and streamlit
